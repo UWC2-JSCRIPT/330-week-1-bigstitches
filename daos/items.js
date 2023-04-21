@@ -4,29 +4,27 @@ const itemsModel = require('../models/items');
 
 module.exports = {};
 
-
 module.exports.getAll = () => {
   return itemsModel.items;
 }
 
 module.exports.getById = (itemId) => {
   // TODO: complete
-  return itemsModel.getById(itemId);
+  const index = itemsModel.items.findIndex(i=>i.id==itemId);
+  return itemsModel.items[index];
 }
 
 module.exports.deleteById = async (itemId) => {
-    // TODO: complete
-    return itemsModel.items;
+  // TODO: complete
+  const index = itemsModel.items.findIndex(i=>i.id==itemId);
+  return itemsModel.items[index];
 }
 
 module.exports.updateById = async (itemId, newObj) => {
-    // TODO: complete
-    if (itemsModel.getById(itemId) === undefined) {
-      console.log('undefined');
-    } else {
-      console.log('defined');
-    }
-    
+  // TODO: complete
+  const index = itemsModel.items.findIndex(i=>i.id==itemId);
+  const objCombined = {...itemsModel.items[index], ...newObj};
+  return objCombined;
 }
 
 module.exports.create = async (item) => {
